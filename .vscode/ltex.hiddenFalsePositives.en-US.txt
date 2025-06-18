@@ -1,0 +1,4 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qcv-research\\E$"}
+{"rule":"DASH_RULE","sentence":"^\\QProject Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.\\E$"}
+{"rule":"PASSIVE_VOICE","sentence":"^\\QThe CV is generated in R using the \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, and \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q packages.\\E$"}
+{"rule":"PASSIVE_VOICE","sentence":"^\\QThe content is licensed under CC0 1.0 Universal, placing these materials in the public domain.\\E$"}

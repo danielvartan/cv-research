@@ -1,0 +1,379 @@
+---
+title: "Daniel Vartanian's CV"
+author: Daniel Vartanian
+date: "`r Sys.Date()`"
+params:
+  pdf_mode:
+    value: false
+output:
+  pagedown::html_resume:
+    css: ["resume", "css/dd_cv.css", "css/custom.css"]
+    self_contained: true
+---
+
+<!-- See <https://pagedown.rbind.io/#resume> to learn more. -->
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results = "asis",
+  echo = FALSE
+)
+```
+
+```{r, eval=FALSE, include=FALSE}
+library(beepr)
+library(checkmate)
+library(datadrivencv)
+library(dplyr)
+library(glue)
+library(googlesheets4)
+library(here)
+library(metathis)
+library(pagedown)
+library(purrr)
+library(rmarkdown)
+library(tidyr)
+library(withr)
+```
+
+```{r, include=FALSE}
+source(here::here("R", "printing.R"))
+```
+
+```{r metathis, echo = FALSE, message = FALSE, warning = FALSE}
+metathis::meta() |>
+  metathis::meta_name("github-repo" = "danielvartan/cv-research") |>
+  metathis::meta_social(
+    title = "Daniel Vartanian's CV",
+    url = "https://danielvartan.github.io/cv-research",
+    og_type = "website",
+    og_author = "Daniel Vartanian",
+    og_locale = "en_US"
+  )
+```
+
+<!-- styles: start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<!-- styles: end -->
+
+<!-- scripts: start -->
+<script src="https://kit.fontawesome.com/ddcb976bc4.js" crossorigin="anonymous"></script>
+<!-- scripts: end -->
+
+```{r, include = FALSE}
+data_location <- paste0(
+  "https://docs.google.com/spreadsheets/d/",
+  "1Cp-ebP86AXGIIpuGiFnTpquweFzMsH9M8QDIUQfZQEU"
+)
+
+# Read all data and initialize a cv printer object
+cv <- data_location  |> create_cv_object()
+```
+
+# Aside
+
+![Daniel Vartanian](https://avatars.githubusercontent.com/u/29462472?v=4){width=100% style='border-radius: 50%; text-align: center;'}
+
+```{r}
+if (isTRUE(params$pdf_mode)) {
+  cat(
+    "<p style='font-size: 0.65rem; text-align: center;'>",
+    "Access this CV online at: ",
+    "[danielvartan.github.io/cv-research]",
+    "(https://danielvartan.github.io/cv-research)",
+    "</p>",
+    sep = ""
+  )
+} else {
+  cat(
+    "<p style='text-align: center;'>",
+    "[<i class = 'fas fa-download'></i> Download this CV]",
+    "(pdf/Daniel%20Vartanian.pdf)",
+    "</p>",
+    sep = ""
+  )
+}
+```
+
+::: {style="text-align: left; padding-top:20px;"}
+<h2>Contact</h2>
+
+<i class="fa fa-map-marker"></i>  São Paulo, SP, Brazil
+
+<i class="fa-solid fa-phone"></i> [+55 11 95057-9817](https://wa.me/+5511950579817)
+
+<i class="fa-solid fa-envelope"></i> [danvartan@gmail.com](mailto:danvartan@gmail.com)
+
+<i class="fa-brands fa-github"></i> [danielvartan](https://github.com/danielvartan)
+
+<i class="fa-brands fa-linkedin-in"></i> [danielvartan](https://www.linkedin.com/in/danielvartan)
+
+<i class="fa-brands fa-orcid"></i> [0000-0001-7782-759X](https://orcid.org/0000-0001-7782-759X)
+:::
+
+::: {style="text-align: left; padding-top:20px;"}
+<h2>References</h2>
+
+<h3 style="padding-top: 15px;">[Prof. Dr. Aline Carvalho](https://orcid.org/0000-0002-4900-5609)</h3>
+
+<p>
+Department of Nutrition<br>
+School of Public Health<br>
+University of São Paulo
+</p>
+
+<h3>[Prof. Dr. Camilo R. Neto](https://orcid.org/0000-0001-6783-6695)</h3>
+
+<p>
+Graduate Program in Complex Systems Modeling<br>
+School of Arts, Sciences and Humanities<br>
+University of São Paulo
+</p>
+
+<h3>[Prof. Dr. Leandro Garcia](https://orcid.org/0000-0001-5947-2617)</h3>
+
+<p>
+Senior Lecturer in Complexity Science in Public Health<br>
+Centre for Public Health<br>
+Queen's University Belfast
+</p>
+:::
+
+## Disclaimer {#disclaimer}
+
+Developed with R [pagedown](https://github.com/rstudio/pagedown) and [datadrivencv](https://github.com/nstrayer/datadrivencv) packages
+
+Source code available at [github.com/danielvartan/cv-research](https://github.com/danielvartan/cv-research)
+
+Last updated on `r withr::with_locale(c("LC_TIME" = "en_US"), format(Sys.Date(), "%B %e, %Y"))`
+
+# Main
+
+## Daniel Vartanian {#title}
+
+<p style="font-size: 0.7rem;">Interdisciplinary researcher specializing in agent-based modeling, complex systems, and research software engineering, primarily in social, public health, and environmental contexts. Highly skilled in R (incl. package development), NetLogo, Python, data visualization, user interfaces (GUIs), and reproducible research. Experienced in leading and collaborating across interdisciplinary teams, developing user-friendly scientific tools, and supporting stakeholder engagement. Fluent in English and Portuguese. Prepared to relocate and integrate into new institutional and cultural environments.<p>
+
+<p style="font-size: 0.7rem; font-style: italic; color: #4F5556; padding-top: 0rem">Additional supporting documents, detailed outputs, and original references available upon request or via links below.<p>
+
+<p style="font-size: 0.7rem; font-style: italic; color: #4F5556; padding-top: 0rem;">Legal name: Daniel Kachvartanian de Azevedo<br>Professional and social name: Daniel Vartanian<p>
+
+
+## Education {#education data-icon=graduation-cap}
+
+```{r}
+cv <- cv |> print_section("education")
+```
+
+## Research Experience {#research data-icon=laptop}
+
+```{r}
+cv <- cv |> print_section("research_experience")
+```
+
+::: {.aside style="top: 0px;"}
+<h2>Affiliations</h2>
+
+<h3 style="padding-bottom: 5px">[RESICLIMA Network](https://resiclima.com.br/quem-somos/)</h3>
+
+<p style="margin-block-start: 0em;">Researcher (2024-Present)</p>
+
+<h3 style="padding-bottom: 5px">[Sustentarea](https://www.fsp.usp.br/sustentarea/)</h3>
+
+<p style="margin-block-start: 0em;">Researcher (2024-Present)</p>
+
+<h3 style="padding-bottom: 5px">[rOpenSci](https://ropensci.org)</h3>
+
+<p style="margin-block-start: 0em;">Software Developer and Maintainer (2021-Present)</p>
+
+<h3 style="padding-bottom: 5px">[Interdisciplinary Sleep Research Group (GIPSO)](https://dgp.cnpq.br/dgp/espelhogrupo/0840395566366418)</h3>
+
+<p style="margin-block-start: 0em;">Researcher (2016-2022)</p>
+
+<br>
+
+<h2>Languages</h2>
+
+<p style="margin-top: 5px"><i class="fa-solid fa-crow"></i> [danielvartan](https://www.duolingo.com/profile/danielvartan)</p>
+
+<h3 style="padding-top: 10px">English</h3>
+
+<i class="fa-solid fa-ear-listen"></i> Fluent
+
+<i class="fas fa-book-reader"></i> Fluent
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> Fluent
+
+<i class="fas fa-pencil-alt" aria-hidden="true"></i> Fluent
+
+<h3 style="padding-top: 10px">Portuguese</h3>
+
+<i class="fa-solid fa-ear-listen"></i> Fluent
+
+<i class="fas fa-book-reader"></i> Fluent
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> Fluent
+
+<i class="fas fa-pencil-alt" aria-hidden="true"></i> Fluent
+
+<h3 style="padding-top: 10px">Spanish</h3>
+
+<i class="fa-solid fa-ear-listen"></i> Fluent
+
+<i class="fas fa-book-reader"></i> Fluent
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> Intermediate
+
+<i class="fas fa-pencil-alt" aria-hidden="true"></i> Intermediate
+
+<h3 style="padding-top: 10px">French</h3>
+
+<i class="fa-solid fa-ear-listen"></i> Basic
+
+<i class="fas fa-book-reader"></i> Basic
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> Basic
+
+<i class="fas fa-pencil-alt" aria-hidden="true"></i> Basic
+:::
+
+## Teaching Experience {#teaching data-icon=chalkboard-user}
+
+```{r}
+cv <- cv |> print_section("teaching_experience")
+```
+
+## Honors, Awards & Fellowships {#funding data-icon=medal}
+
+```{r}
+cv <- cv |> print_section("funding")
+```
+
+::: {.aside style="top: 0px;"}
+<h2>Programming Languages</h2>
+
+<p style="margin-top: 5px"><i class="fa-brands fa-github"></i> [danielvartan](https://github.com/danielvartan)</p>
+
+<h3 style="padding-top: 10px">Expert</h3>
+
+<i class="fab fa-r-project"></i> `R`
+
+<i class="fa-solid fa-map"></i> `NetLogo`
+
+<h3 style="padding-top: 10px">Advanced</h3>
+
+<i class="fab fa-python"></i> `Python`
+
+<i class="fas fa-database"></i> `SQL`
+
+<h3 style="padding-top: 10px">Intermediate</h3>
+
+<i class="fa-solid fa-terminal"></i> `Bash`
+
+<i class="fab fa-js"></i> `JavaScript`
+
+<h3 style="padding-top: 10px">Beginner</h3>
+
+<i class="fa-solid fa-code"></i> `C` `C++` `C#`
+
+<i class="fa-solid fa-code"></i> `Scala`
+
+<i class="fa-solid fa-code"></i> `GAML` (GAMA)
+
+<i class="fa-solid fa-robot"></i> `GDScript` (Godot)
+
+<i class="fa-solid fa-code"></i> `Julia`
+
+<i class="fa-solid fa-code"></i> `Lua`
+
+<i class="fa-brands fa-php"></i> `PHP`
+
+<h3 style="padding-top: 10px">Markup/Other Languages</h3>
+
+<i class="fab fa-css3-alt"></i> `CSS`
+
+<i class="fas fa-code-branch"></i> `Git`
+
+<i class="fab fa-html5"></i> `HTML`
+
+<i class="fa-brands fa-markdown"></i> `Markdown`
+
+<i class="fa-brands fa-sass"></i> `SASS`
+
+<i class="fas fa-code"></i> `SPSS`
+
+<i class="fa-solid fa-code"></i> `TeX` `LaTeX`
+:::
+
+## Outreach Projects {#outreach data-icon=users}
+
+```{r}
+cv <- cv |> print_section("outreach")
+```
+
+## Selected Talks {#talks data-icon=comments}
+
+```{r}
+cv <- cv |> print_section("talks")
+```
+
+## Selected Software Projects {#software data-icon=box-open}
+
+```{r}
+cv <- cv |> print_section("software_development")
+```
+
+::: {.aside style="top: 0px;"}
+<h2>Technical Skills</h2>
+
+<p style="margin-block-start: 0em;">• Statistical modeling</p>
+
+<p style="margin-block-start: 0em;">• Complex systems modeling</p>
+
+<p style="margin-block-start: 0em;">• Agent-based modeling</p>
+
+<p style="margin-block-start: 0em; color: #4F5556;">(NetLogo, GAMA, Python/[Mesa](https://mesa.readthedocs.io/))</p>
+
+<p style="margin-block-start: 0em;">• Programming </p>
+
+<p style="margin-block-start: 0em; color: #4F5556;">(R, Python, NetLogo, SQL)</p>
+
+<p style="margin-block-start: 0em;">• Machine learning</p>
+
+<p style="margin-block-start: 0em;">• Temporal data analysis</p>
+
+<p style="margin-block-start: 0em;">• Spatial data analysis</p>
+
+<p style="margin-block-start: 0em;">• Data visualization</p>
+
+<p style="margin-block-start: 0em; color: #4F5556;">([Shiny](https://danielvartan.shinyapps.io/cran-logs), Plotly, [Quarto](https://danielvartan.github.io/mastersthesis/web/qmd/supplementary-material-3.html), R Markdown)</p>
+
+<p style="margin-block-start: 0em;">• Research software development</p>
+
+<p style="margin-block-start: 0em; color: #4F5556;">([CRAN](https://cran.r-project.org/web/packages/brandr/index.html), [rOpenSci](https://github.com/ropensci/mctq), [GitHub](https://github.com/danielvartan/actverse))</p>
+
+<p style="margin-block-start: 0em;">• Open science practices</p>
+
+<p style="margin-block-start: 0em;">• Reproducible research</p>
+
+<p style="margin-block-start: 0em;">• Project management</p>
+
+<p style="margin-block-start: 0em;">• Technical and academic writing</p>
+
+<p style="margin-block-start: 0em;">• Proposal/grant writing</p>
+
+<p style="margin-block-start: 0em;">• Community building and management</p>
+
+<p style="margin-block-start: 0em;">• Cross-sector teamwork</p>
+
+<p style="margin-block-start: 0em;">• Scientific communication </p>
+
+<p style="margin-block-start: 0em; color: #4F5556;">([Oral](https://g1.globo.com/fantastico/video/metade-da-populacao-se-sente-mal-no-horario-de-verao-revela-pesquisa-6219513.ghtml), [written](https://danielvartan.github.io/lorenz-system/), [visual](https://danielvartan.github.io/central-limit-theorem/))</p>
+
+<p style="margin-block-start: 0em;">• Graphic and web design</p>
+:::
+
+## Selected Publications {#publications data-icon=book}
+
+```{r}
+cv <- cv |> print_section("publications")
+```
