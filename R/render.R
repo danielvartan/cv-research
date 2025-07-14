@@ -3,6 +3,7 @@
 # library(cli))
 # library(here)
 library(magrittr)
+# library(pdftools)
 # library(rmarkdown)
 
 cli::cli_progress_step("Rendering the HTML version of the CV")
