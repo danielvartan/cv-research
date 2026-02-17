@@ -3,7 +3,7 @@
 # v2.0.0 (2026-02-17)
 
 - Updated data to include recent publications and projects.
-- Improved the CV text.
+- Improved the text.
 - Changed typeface to Montserrat.
 - Refactored the codebase and template.
 - Changed license to GPL-3.0.

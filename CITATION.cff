@@ -34,8 +34,11 @@ preferred-citation:
       given-names: Daniel
       email: danielvartan@proton.me
       orcid: https://orcid.org/0000-0001-7782-759X
-  url: https://danielvartan.github.io/cv-research
+  doi: 10.5281/zenodo.18666383
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.18666383
+    description: Zenodo Record
   - type: url
     value: https://danielvartan.github.io/cv-research
     description: Curriculum Vitae Website
@@ -44,4 +47,4 @@ identifiers:
     description: GitHub Code Repository
 repository-code: https://github.com/danielvartan/cv-research
 license: GPL-3.0-or-later
-version: 2.0.0
+version: 2.0.1.9000

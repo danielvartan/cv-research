@@ -62,6 +62,7 @@
     "tibble",
     "tidyr",
     "Vartanian",
-    "withr"
+    "withr",
+    "zenodo"
   ]
 }

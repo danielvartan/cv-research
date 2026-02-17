@@ -55,6 +55,7 @@
   "codeRepository": "https://github.com/danielvartan/cv-research",
   "issueTracker": "https://github.com/danielvartan/cv-research/issues",
   "relatedLink": [
+    "https://doi.org/10.5281/zenodo.18666383",
     "https://danielvartan.github.io/cv-research"
   ],
   "runtimePlatform": "R",
@@ -72,5 +73,5 @@
   "developmentStatus": "active",
   "readme": "https://github.com/danielvartan/cv-research/blob/main/README.md",
   "releaseNotes": "https://github.com/danielvartan/cv-research/blob/main/NEWS.md",
-  "version": "2.0.0"
+  "version": "2.0.1.9000"
 }
