@@ -1,42 +1,61 @@
-# library(beepr)
-# library(chromote)
-# library(cli))
-# library(here)
+# Load Packages -----
+
+library(beepr)
+library(chromote)
+library(cli)
+library(here)
 library(magrittr)
-# library(pdftools)
-# library(rmarkdown)
+library(pdftools)
+library(purrr)
+library(rmarkdown)
 
-cli::cli_progress_step("Rendering the HTML version of the CV")
+# Set Chrome Path for `chromote` -----
 
-html_file <- here::here("docs", "index.html")
-
-rmarkdown::render(
-  here::here("index.Rmd"),
-  params = list(pdf_mode = FALSE),
-  output_file = html_file
+Sys.setenv(
+  CHROMOTE_CHROME = "/var/lib/flatpak/exports/bin/com.google.Chrome"
 )
 
-cli::cli_progress_step("Rendering the PDF version of the CV")
+# Render CV -----
 
-html_pdf_file <- here::here("docs", "pdf", "index_pdf.html")
+cli_progress_step("Rendering the HTML version of the CV")
 
-rmarkdown::render(
-  here::here("index.Rmd"),
-  params = list(pdf_mode = TRUE),
-  output_file = html_pdf_file
-)
+html_file <- here("docs", "index.html")
 
-cli::cli_progress_step("Creating the PDF file from the HTML version")
+here("index.Rmd") |>
+  rmarkdown::render(
+    params = list(pdf_mode = FALSE),
+    output_file = html_file
+  )
 
-pdf_file <- here::here("docs", "pdf", "Daniel Vartanian.pdf")
+cli_process_done()
 
-session <- chromote::ChromoteSession$new()
+Sys.sleep(1)
+beep(1)
+
+cli_progress_step("Rendering the PDF version of the CV")
+
+html_pdf_file <- here("docs", "pdf", "index_pdf.html")
+
+here("index.Rmd") |>
+  rmarkdown::render(
+    params = list(pdf_mode = TRUE),
+    output_file = html_pdf_file
+  )
+
+cli_process_done()
+
+Sys.sleep(1)
+beep(1)
+
+cli_progress_step("Creating the CV PDF file")
+
+pdf_file <- here("docs", "pdf", "Daniel Vartanian.pdf")
+
+session <- ChromoteSession$new()
 
 html_pdf_file %>%
   paste0("file://", .) |>
   session$go_to(delay = 5)
-
-# Sys.sleep(5)
 
 pdf_file |>
   session$screenshot_pdf(
@@ -50,22 +69,28 @@ pdf_file |>
     wait_ = TRUE
   )
 
-cli::cli_process_done()
+cli_process_done()
 
-beepr::beep(1)
+Sys.sleep(1)
+beep(1)
+
+# Check the Number of Pages in the PDF File -----
 
 pdf_pages <-
   pdf_file |>
-  pdftools::pdf_info() |>
-  magrittr::extract2("pages")
+  pdf_info() |>
+  pluck("pages")
 
-if (!pdf_pages == 4) {
-  beepr::beep(9)
+max_pages <- 4
 
-  cli::cli_abort(
+if (!pdf_pages == max_pages) {
+  Sys.sleep(1)
+  beep(2)
+
+  cli_abort(
     paste0(
-      "The PDF file has {.strong {cli::col_red(pdf_pages)}}, ",
-      "pages, but it should have {.strong {cli::col_blue('4')}} pages. ",
+      "The PDF file has {.strong {col_red(pdf_pages)}}, ",
+      "pages, but it should have {.strong {col_blue(max_pages)}} pages. ",
       "Please check the rendering process and try again."
     )
   )

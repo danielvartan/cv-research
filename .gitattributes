@@ -1,0 +1,6 @@
+*.Rmd linguist-detectable
+
+docs/* linguist-documentation
+css/* linguist-documentation
+
+.vscode/* linguist-generated

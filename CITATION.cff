@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+title: "Curriculum Vitae for Research Positions"
+message: >-
+  If you use this software, please cite it using the metadata from this file.
+type: software
+authors:
+  - given-names: Daniel
+    family-names: Vartanian
+    email: danielvartan@proton.me
+    affiliation: University of São Paulo
+    orcid: "https://orcid.org/0000-0001-7782-759X"
+abstract: >-
+  Source files for generating my curriculum vitae (CV) for research positions.
+keywords:
+  - Resume
+  - CV
+  - Curriculum Vitae
+  - Research
+  - Data Science
+  - Complex Systems
+  - Agent-Based Modeling
+  - Research Software Engineering
+  - Reproducible Research
+  - Open Source
+  - Open Science
+  - rmarkdown
+  - pagedown
+  - datadrivencv
+preferred-citation:
+  type: software
+  title: "Curriculum vitae for research positions"
+  authors:
+    - family-names: Vartanian
+      given-names: Daniel
+      email: danielvartan@proton.me
+      orcid: https://orcid.org/0000-0001-7782-759X
+  url: https://danielvartan.github.io/cv-research
+identifiers:
+  - type: url
+    value: https://danielvartan.github.io/cv-research
+    description: Curriculum Vitae Website
+  - type: url
+    value: https://github.com/danielvartan/cv-research
+    description: GitHub Code Repository
+repository-code: https://github.com/danielvartan/cv-research
+license: GPL-3.0-or-later
+version: 2.0.0
